@@ -24,7 +24,8 @@ namespace Jellyfin.Plugin.TorrentPauser
             _httpClientFactory = httpClientFactory;
         }
 
-        public HttpClient GetHttpClient() {
+        public HttpClient GetHttpClient()
+        {
             var httpClient = _httpClientFactory.CreateClient(NamedClient.Default);
             httpClient.DefaultRequestHeaders.UserAgent.Add(
                 new ProductInfoHeaderValue(Name, Version.ToString()));
@@ -43,7 +44,7 @@ namespace Jellyfin.Plugin.TorrentPauser
             return new[]
             {
                 new PluginPageInfo
-                { 
+                {
                     Name = this.Name,
                     EmbeddedResourcePath = string.Format("{0}.Configuration.configPage.html", GetType().Namespace)
                 }
