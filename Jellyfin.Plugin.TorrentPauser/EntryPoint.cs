@@ -21,12 +21,14 @@ namespace Jellyfin.Plugin.TorrentPauser
     public class EntryPoint : IServerEntryPoint
     {
         private readonly ISessionManager _sessionManager;
+        private Qbittorrent _qbittorrent;
 
         public EntryPoint(
             ISessionManager sessionManager
             )
         {
             _sessionManager = sessionManager;
+            _qbittorrent = new Qbittorrent();
         }
 
         public void Dispose()
@@ -45,7 +47,7 @@ namespace Jellyfin.Plugin.TorrentPauser
 
         private async void OnPlaybackStart(object sender, PlaybackProgressEventArgs e)
         {
-           // Limit
+            // Limit
         }
 
         private async void OnPlaybackStopped(object sender, PlaybackStopEventArgs e)
